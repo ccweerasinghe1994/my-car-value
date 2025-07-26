@@ -2,14 +2,14 @@
 
 ## Project Overview
 
-This is a NestJS TypeScript application called "my-car-value" - currently a starter template ready for car valuation feature development. Uses pnpm as package manager with modern tooling (ESLint 9, TypeScript 5.7, Jest).
+This is a NestJS TypeScript application called "my-car-value" for car valuation features. Uses pnpm as package manager with modern tooling (ESLint 9, TypeScript 5.7, Jest). Current modules: `users` and `reports` for user management and car valuation reporting.
 
 ## Architecture Patterns
 
-- **Module Structure**: Follow NestJS module pattern - each feature should have its own module with controllers, services, and DTOs
-- **Dependency Injection**: Use constructor injection with `@Injectable()` decorators, as seen in `src/app.service.ts`
-- **Controller Pattern**: Controllers handle HTTP requests, delegate business logic to services (`src/app.controller.ts`)
-- **Service Layer**: Business logic lives in services with `@Injectable()` decorator
+- **Module Structure**: Follow NestJS module pattern - each feature has its own module with controllers, services, and DTOs. See `users/` and `reports/` modules as examples
+- **Dependency Injection**: Use constructor injection with `@Injectable()` decorators (e.g., `UsersService`, `ReportsService`)
+- **Controller Pattern**: Controllers handle HTTP requests with route decorators like `@Controller('users')`, delegate business logic to services
+- **Service Layer**: Business logic lives in services with `@Injectable()` decorator - services are injected into controllers
 
 ## Development Workflow
 
@@ -44,7 +44,9 @@ pnpm run format
 ## Key Files
 
 - `src/main.ts`: Application bootstrap (port 3000 default)
-- `src/app.module.ts`: Root module configuration
+- `src/app.module.ts`: Root module configuration with UsersModule and ReportsModule imports
+- `src/users/`: User management module with controller, service, and tests
+- `src/reports/`: Car valuation reporting module with controller, service, and tests
 - `nest-cli.json`: NestJS CLI configuration with `deleteOutDir: true`
 - `tsconfig.json`: TypeScript config optimized for NestJS with decorators
 
