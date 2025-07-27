@@ -18,16 +18,24 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:db": "docker-compose up postgres",
+    "docker:db:down": "docker-compose down",
+    "docker:full": "docker-compose --profile full-stack up --build",
+    "docker:dev": "docker-compose up postgres && pnpm run start:dev",
+    "typeorm:migration:generate": "typeorm-ts-node-commonjs migration:generate",
+    "typeorm:migration:run": "typeorm-ts-node-commonjs migration:run",
+    "typeorm:migration:revert": "typeorm-ts-node-commonjs migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/typeorm": "^11.0.0",
+    "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "sqlite3": "^5.1.7",
     "typeorm": "^0.3.25"
   },
   "devDependencies": {
